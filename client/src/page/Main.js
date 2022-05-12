@@ -34,13 +34,12 @@ const Main = () => {
     return (
         <>
             <h2>블록 가져오기!!!</h2>
-            <input type="text" name="index" value={index} />
-            <input type="text" name="data" value={data}/>
-            <input type="text" name="timestamp" value={timestamp}/>
-            <input type="text" name="hash" value={hash}/>
-            <input type="text" name="previousHash" value={previousHash}/>
-            <input type="text" name="difficulty" value={difficulty}/>
-            <input type="text" name="nonce" value={nonce}/>
+            <p>{index}</p>
+            <p>{data}</p>
+            <p>{timestamp}</p>
+            <p>{hash}</p>
+            <p>{previousHash}</p>
+            <p>{nonce}</p>
             <input type="submit" onClick={handleClick} value="블록 가져와"/>
 
         </>
