@@ -1,5 +1,3 @@
-import TestButton from "./TestButton";
-import TestMain from "./TestMain";
-import TestTest from "./TestTest";
+import Header from "./Header";
 
-export { TestButton, TestMain, TestTest }  
+export { Header }  
