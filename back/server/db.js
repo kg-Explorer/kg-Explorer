@@ -7,4 +7,4 @@ const pool = mysql.createPool({
     database : 'block'
 })
 
-module.exports = pool
+module.exports = pool;
