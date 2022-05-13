@@ -10,7 +10,7 @@ const DataPost = () => {
         e.preventDefault()
         console.log('post가?')
         try {
-            const blocks = await axios.post('http://localhost:3500/block/createBlock', {
+            const blocks = await axios.post('http://localhost:3500/block/miningBlock', {
 
                 data:data,
 
