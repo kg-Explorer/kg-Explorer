@@ -1,3 +1,4 @@
 import Header from "./Header";
+import DataPost from "./DataPost";
 
-export { Header }  
+export { Header, DataPost }  
