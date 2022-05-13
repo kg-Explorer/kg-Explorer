@@ -1,16 +1,17 @@
 CREATE TABLE getblock(
-    `blockIndex` INT(11) NULL,
-    `data` VARCHAR(255) NULL,
-    `timestamp` TIMESTAMP default current_timestamp,
-    `hash` VARCHAR(255) NULL,
-    `previousHash` VARCHAR(255) NULL,
-    `difficulty` INT(11) NULL,
-    `nonce` INT(11) NULL
+    "blockIndex" INT(11) NULL,
+    "data" VARCHAR(255) NULL,
+    "timestamp" TIMESTAMP default current_timestamp,
+    "hash" VARCHAR(255) NULL,
+    "previousHash" VARCHAR(255) NULL,
+    "difficulty" INT(11) NULL,
+    "nonce" INT(11) NULL
 );
 
+USE block;
 DROP TABLE getblock;
 SELECT * FROM getblock;
-DESC getblock;
+-- DESC getblock;
 
 
 -- test data
