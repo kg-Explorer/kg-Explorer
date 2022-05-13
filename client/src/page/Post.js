@@ -14,13 +14,13 @@ const Post = () => {
         e.preventDefault()
         console.log('post가?')
         try {
-            const blocks = await axios.post('http://localhost:3500/block/createBlock', {
-                blockIndex:blockIndex,
+            const blocks = await axios.post('http://localhost:3500/block/miningBlock', {
+                // blockIndex:blockIndex,
                 data:data,
-                hash:hash,
-                previousHash:previousHash,
-                difficulty:difficulty,
-                nonce:nonce
+                // hash:hash,
+                // previousHash:previousHash,
+                // difficulty:difficulty,
+                // nonce:nonce
             })
         }
         catch (error) {
