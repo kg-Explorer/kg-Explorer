@@ -1,3 +1,4 @@
+
 CREATE TABLE blocks(
     `blockIndex` INT(11) NOT NULL,
     `data` VARCHAR(255) NOT NULL,
@@ -9,6 +10,7 @@ CREATE TABLE blocks(
 );
 
 SELECT * FROM blocks;
+
 
 DESC blocks;
 

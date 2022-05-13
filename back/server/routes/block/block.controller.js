@@ -3,6 +3,7 @@ const pool = require('../../db.js')
 const getblock = async (req, res) => {
     const [blocks] = await pool.query(`SELECT * FROM getblock`)
     console.log('blocks : ', blocks)
+
     res.json(blocks)
 }
 
