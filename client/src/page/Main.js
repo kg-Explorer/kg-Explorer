@@ -6,6 +6,7 @@ import { DataPost } from '../components'
 const Main = () => {
 
     const [getBlock ,setGetBlock] = useState(null)
+    const [test, setTest] = useState(0)
 
     const getGetBlockFunc =  async () => {
         console.log('이거 가냐?')
@@ -27,7 +28,7 @@ const Main = () => {
 
     useEffect( () => {
         getGetBlockFunc()
-    },[])
+    },[test])
 
     return (
         <>
@@ -52,7 +53,7 @@ const Main = () => {
                     :
                     getBlock.map( (number, index) => {
                         return <tr key={index}>
-                            <td>{number.index}</td>
+                            <td>{number.blockIndex}</td>
                             <td>{number.data}</td>
                             <td>{number.timestamp}</td>
                             <td>{number.hash}</td>
@@ -64,7 +65,7 @@ const Main = () => {
                 }
                 </tbody>
             </Table>
-            <DataPost />
+            <DataPost test={test} setTest={setTest}/>
 
         </>
     )

@@ -2,7 +2,7 @@ import React from 'react'
 import axios from "axios";
 import { useState } from "react";
 
-const DataPost = () => {
+const DataPost = (props) => {
 
     const [data, setData] = useState('')
 
@@ -14,7 +14,9 @@ const DataPost = () => {
 
                 data:data,
 
-            })
+            }
+            )
+            props.setTest(props.test + 1)
         }
         catch (error) {
             console.log(error)
