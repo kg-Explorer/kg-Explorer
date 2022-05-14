@@ -7,7 +7,7 @@ const Header = () => {
     const navigate = useNavigate();
 
     return (
-    <div>
+    <div className='navBar'>
         <Navbar bg="dark" variant="dark">
             <Container>
                 <Navbar.Brand href="/">Here is Explorer!!</Navbar.Brand>

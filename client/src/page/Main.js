@@ -34,10 +34,10 @@ const Main = () => {
         <>
             <h2>블록 가져오기!!!</h2>
 
-            <Table responsive="sm">
+            <Table striped bordered hover size="sm" className="mainTable">
                 <thead>
                 <tr>
-                    <th>#</th>
+                    <th>BLOCK #</th>
                     <th>Data</th>
                     <th>Timestamp</th>
                     <th>Hash</th>
