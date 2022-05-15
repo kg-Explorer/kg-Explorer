@@ -13,7 +13,7 @@ const DataPost = (props) => {
             const blocks = await axios.post('http://localhost:3500/block/miningBlock', {
 
                 data:data,
-
+                // count : count 이걸로 숫자넣기
             }
             )
             props.setTest(props.test + 1)

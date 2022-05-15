@@ -15,9 +15,12 @@ const Main = () => {
             console.log('blocks : ', blocks)
             console.log('전체데이터 : ', blocks.data) // 요게 배열
             console.log('배열의 특정 인덱스 : ', blocks.data[0]) // 그 인덱스 값을 다 돌리면 되겠지? 
-            console.log('블록데이터 : ', blocks.data[0].data) // 그 인덱스 값을 다 돌리면 되겠지? 
+            console.log('블록해쉬 : ', blocks.data[0].hash) // 그 인덱스 값을 다 돌리면 되겠지? 
+            console.log('블록해쉬타입 : ', typeof(blocks.data[0].hash))  
+            console.log('스트링앞짜르기 : ', (blocks.data[0].hash).substr(0, 5)) 
+            console.log('스트링뒤짜르기 : ', (blocks.data[0].hash).slice(-5))  
 
-            setGetBlock(blocks.data)
+            setGetBlock(blocks.data.reverse()) 
             console.log(getBlock)
 
         }
@@ -37,7 +40,7 @@ const Main = () => {
             <Table striped bordered hover size="sm" className="mainTable">
                 <thead>
                 <tr>
-                    <th>BLOCK #</th>
+                    <th>BLOCK#</th>
                     <th>Data</th>
                     <th>Timestamp</th>
                     <th>Hash</th>
@@ -56,8 +59,8 @@ const Main = () => {
                             <td>{number.blockIndex}</td>
                             <td>{number.data}</td>
                             <td>{number.timestamp}</td>
-                            <td>{number.hash}</td>
-                            <td>{number.previousHash}</td>
+                            <td>{(number.hash).substr(0, 6)}...{(number.hash).slice(-6)}</td>
+                            <td>{(number.previousHash).substr(0, 6)}...{(number.previousHash).slice(-6)}</td>
                             <td>{number.difficulty}</td>
                             <td>{number.nonce}</td>
                         </tr>
