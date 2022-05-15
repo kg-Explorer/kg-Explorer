@@ -29,7 +29,10 @@ const Login = () => {
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" />
         </Form.Group>
-        <button>Login</button>
+        <div className='loginButton'>
+            <button>Create Key</button>
+            <button>Login</button>
+        </div>
         </Form>
     </div>
     

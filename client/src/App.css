@@ -43,8 +43,9 @@
   align-items: center;
 }
 
-.loginMain button {
-  float: right;
+.loginButton {
+  display: flex;
+  justify-content: space-between;
 }
 
 .loginBox {
