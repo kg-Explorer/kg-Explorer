@@ -40,8 +40,15 @@ DESC wallet;
 CREATE TABLE tx(
     `txFrom` VARCHAR(255) NOT NULL,
     `txTo` VARCHAR(255) NOT NULL,
+    `txAmount` INT(11) NOT NULL,
     `txTime` TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
+
+SELECT * FROM tx;
+
+DROP TABLE tx;
+
+
 
 
 

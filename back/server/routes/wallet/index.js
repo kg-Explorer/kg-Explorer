@@ -4,6 +4,8 @@ const walletController = require('./wallet.controller');
 
 router.get('/createAddress', walletController.createAddress);
 
+router.get('/addressAll', walletController.addressAll);
+
 router.post('/checkAddress', walletController.checkAddress);
 
 

@@ -14,7 +14,15 @@ const checkAddress = async (req, res) => {
     res.send('post test2')
 }
 
+const addressAll = async (req, res) => {
+    console.log('addressAll : ' + req.body.data);
+    const [wallet] = await pool.query(`SELECT publicKey FROM wallet`)
+    console.log('addressAll wallet' + wallet)
+    res.json({wallet})
+}
+
 module.exports = {
     createAddress,
-    checkAddress
+    checkAddress,
+    addressAll,
 }
