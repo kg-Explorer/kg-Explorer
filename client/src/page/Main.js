@@ -1,12 +1,12 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Table } from 'react-bootstrap'
-import { DataPost } from '../components'
+import { DataPost, AutoDataPost } from '../components'
 
 const Main = () => {
 
     const [getBlock ,setGetBlock] = useState(null)
-    const [test, setTest] = useState(0)
+    const [postData, setPostData] = useState(0)
 
     const getGetBlockFunc =  async () => {
         console.log('이거 가냐?')
@@ -31,7 +31,7 @@ const Main = () => {
 
     useEffect( () => {
         getGetBlockFunc()
-    },[test])
+    },[postData])
 
     return (
         <>
@@ -68,7 +68,8 @@ const Main = () => {
                 }
                 </tbody>
             </Table>
-            <DataPost test={test} setTest={setTest}/>
+            <DataPost postData={postData} setPostData={setPostData}/>
+            <AutoDataPost postData={postData} setPostData={setPostData}/>
 
         </>
     )
