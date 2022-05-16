@@ -1,7 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from "axios";
 import { Form } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+
+    const [publicKey, setPublicKey] = useState('')
+
+    const navigate = useNavigate()
+
+    const toCreatekey = () => {
+        navigate('/createkey')
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            const blocks = await axios.post('http://localhost:3500/wallet/checkAddress', {
+                data : publicKey,
+            })
+            await localStorage.setItem('publicKey', blocks.data.publicKey)
+            console.log("퍼블릭키 포스트 성공")
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
+    const changePublicKey = async(e) => {
+        setPublicKey(e.target.value)
+        console.log(publicKey)
+    }
+
   return (
     <div className='loginMain'> 
         {/* <div className='loginBox'>
@@ -18,20 +48,16 @@ const Login = () => {
             </div>
         </div> */}
 
-        <Form>
+        <Form onSubmit={handleSubmit} method='post'>
         <h4>Welcome Explorer</h4>
         <p>login to your wallet key</p>
         <Form.Group className="mb-3" controlId="formGroupEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formGroupPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Label>Wallet Key</Form.Label>
+            <Form.Control onChange={changePublicKey} type="text" placeholder="public key" value={publicKey}/>
         </Form.Group>
         <div className='loginButton'>
-            <button>Create Key</button>
-            <button>Login</button>
+            <button onClick={()=>toCreatekey()}> Create Key</button>
+            <button type='submit'>Login</button>
         </div>
         </Form>
     </div>
