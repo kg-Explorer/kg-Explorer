@@ -11,14 +11,16 @@ const AutoDataPost = (props) => {
         e.preventDefault()
         console.log('post가?')
         try {
-            const blocks = await axios.post('http://localhost:3500/block/autoMiningBlock', {
+            for(let i=0; i < count; i++) {
+                const blocks = await axios.post('http://localhost:3500/block/miningBlock', {
 
-                data:data,
-                count:count,
+                    data:data,
+                    //count:i,
 
+                }
+                )
+                props.setPostData(props.postData + 1)
             }
-            )
-            props.setPostData(props.postData + 1)
         }
         catch (error) {
             console.log(error)
