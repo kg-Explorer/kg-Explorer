@@ -23,13 +23,15 @@ INSERT INTO blocks(blockIndex, data, timestamp, hash, previousHash, difficulty, 
 
 
 -- wallet SQL
+DROP TABLE wallet;
 
 CREATE TABLE wallet(
-    'idx' INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    'publicKey' VARCHAR(255) NOT NULL,
-    'privateKey' VARCHAR(255) NOT NULL
+    `idx` INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `publicKey` VARCHAR(255) NOT NULL,
+    `privateKey` VARCHAR(255) NOT NULL
 );
 
+SELECT * FROM wallet;
 DESC wallet;
 
 
