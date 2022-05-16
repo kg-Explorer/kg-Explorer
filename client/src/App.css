@@ -5,3 +5,126 @@
   flex-direction: column;
 }
 
+.serverTest {
+  width: 500px;
+  height: 200px;
+  border: 1px solid black;
+  border-radius: 30px;
+  padding: 20px;
+}
+
+/* .mainTable {
+  width: 100vw;
+  border: 1px solid black;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+} */
+
+.navBar {
+  height: 8vh;
+}
+
+/* .wallet {
+  border: 2px solid white;
+  justify-content: end;
+  
+} */
+
+/* 로그인 페이지 */
+.loginMain {
+  border: 1px solid gray;
+  border-radius: 30px;
+  width: 600px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginButton {
+  display: flex;
+  justify-content: space-between;
+}
+
+.loginBox {
+  width: 60vw;
+  height: 40vh;
+  border: 2px solid gray;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.loginHead {
+  border: 1px solid black;
+  width: 60vw;
+  height: 10vh;
+  padding: 10px;
+  float: left;
+}
+
+.loginInput {
+  border: 1px solid black;
+  width: 60vw;
+  height: 20vh;
+  padding: 20px;
+}
+
+.loginSubmit {
+  border: 1px solid black;
+  width: 60vw;
+  height: 10vh;
+  padding: 10px;
+}
+
+/* 테스트 페이지  */
+.testContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 10px solid greenyellow;
+  height: 92vh;
+}
+
+.input {
+  width: 80vw;
+  padding: 30px;
+  border: 2px solid black;
+}
+
+.middleBoxCotainer{
+  width: 80vw;
+  border: 2px solid black;
+  display: flex;
+  padding: 15px;
+}
+
+.middle {
+  border: 2px solid pink;
+  width: 30vw;
+  height: 100px;
+  margin: 5px;
+}
+
+.boxContainer {
+  width: 80vw;
+  border: 2px solid black;
+  display: flex;
+}
+
+.box1 {
+  border: 1px solid red;
+  margin: 20px;
+  width: 600px;
+  height: 300px;
+}
+
+.box2 {
+  border: 1px solid blue;
+  margin: 20px;
+  width: 600px;
+  height: 300px;
+}

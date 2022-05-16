@@ -1,13 +1,13 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Header } from './components';
-import { Main, Post, Test } from './page'
+import { Main, Post, Test, Login } from './page'
 import { Routes, Route } from 'react-router-dom'
 
 function App() {
 
   return (
-    <div className="App">
+    <div>
 
       <Header />
           
@@ -16,6 +16,7 @@ function App() {
         <Route path='/' element={<Main/>} />
         <Route path='/post' element={<Post/>} />
         <Route path='/test' element={<Test/>} />
+        <Route path='/login' element={<Login/>} />
       </Routes>
 
     </div>

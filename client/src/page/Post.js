@@ -4,6 +4,7 @@ import { useState } from "react";
 const Post = () => {
     const [blockIndex, setBlockIndex] = useState(0)
     const [data, setData] = useState('')
+    const [timestamp, setTimestamp] = useState(0)
     const [hash, setHash] = useState('')
     const [previousHash, setPreviousHash] = useState('')
     const [difficulty, setDifficulty] = useState(0)
@@ -33,6 +34,10 @@ const Post = () => {
     const changeData = async (e) => {
         setData(e.target.value)
     }
+    const changeTimestamp = async (e) => {
+        setTimestamp(e.target.value)
+
+    }
     const changeHash = async (e) => {
         setHash(e.target.value)
     }
@@ -47,6 +52,7 @@ const Post = () => {
         setNonce(e.target.value)
 
     }
+    
 
 
   return (
@@ -55,7 +61,7 @@ const Post = () => {
       <form onSubmit={handleSubmit} method="post">
         <input onChange={changeBlockIndex} type="number" name="index" value={blockIndex} />
         <input onChange={changeData} type="text" name="data" value={data}/>
-        {/* <input type="text" name="timestamp" /> */}
+        <input onChange={changeTimestamp} name="timestamp" value={timestamp} />
         <input onChange={changeHash} type="text" name="hash" value={hash}/>
         <input onChange={changePreviousHash} type="text" name="previousHash" value={previousHash}/>
         <input onChange={changeDifficulty} type="number" name="difficulty" value={difficulty}/>
