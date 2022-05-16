@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
-const Post = () => {
+const MyPage = () => {
     const [blockIndex, setBlockIndex] = useState(0)
     const [data, setData] = useState('')
     const [timestamp, setTimestamp] = useState(0)
@@ -72,4 +72,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default MyPage;

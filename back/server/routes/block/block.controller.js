@@ -24,8 +24,7 @@ const latestBlock = (req, res) => {
 }
 
 const miningBlock = (req, res) => {
-    console.log("gdddddd")
-    res.send(mineBlock(req.body.data));
+    res.send(mineBlock(req.body.data, req.body.publicKey));
 }
 
 const autoMiningBlock = (req, res) => {

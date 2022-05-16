@@ -16,6 +16,7 @@ const AutoDataPost = (props) => {
 
                     data:data,
                     //count:i,
+                    miner:localStorage.getItem('pulicKey')
 
                 }
                 )

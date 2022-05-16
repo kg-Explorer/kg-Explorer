@@ -3,7 +3,7 @@ const pool = require('../../db');
 
 const createAddress = async(req, res) => {
     const {privateKey, publicKey} = createPublicKey();
-    const [wallet] = await pool.query(`INSERT INTO wallet(privateKey, publicKey) VALUES('${privateKey}', '${publicKey}')`);
+    const [wallet] = await pool.query(`INSERT INTO wallet(privateKey, publicKey, walletAmount) VALUES('${privateKey}', '${publicKey}', 0)`);
     console.log('publicKey : ' + publicKey)
     res.json({publicKey});
 };
@@ -11,10 +11,20 @@ const createAddress = async(req, res) => {
 const checkAddress = async (req, res) => {
     console.log(req.body.data);
     const [wallet] = await pool.query(`SELECT * FROM wallet WHERE publicKey='${req.body.data}'`)
-    res.send('post test2')
+    console.log('publicKey : ' + req.body.data)
+    const publicKey = req.body.data;
+    res.json({publicKey});
+}
+
+const addressAll = async (req, res) => {
+    console.log('addressAll : ' + req.body.data);
+    const [wallet] = await pool.query(`SELECT publicKey FROM wallet`)
+    console.log('addressAll wallet' + wallet)
+    res.json({wallet})
 }
 
 module.exports = {
     createAddress,
-    checkAddress
+    checkAddress,
+    addressAll,
 }

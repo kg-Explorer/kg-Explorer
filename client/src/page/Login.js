@@ -13,17 +13,24 @@ const Login = () => {
         navigate('/createkey')
     }
 
+    const toMainPage = () => {
+        navigate('/')
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
             const blocks = await axios.post('http://localhost:3500/wallet/checkAddress', {
                 data : publicKey,
             })
-            await localStorage.setItem('publicKey', blocks.data.publicKey)
+            localStorage.setItem('publicKey', blocks.data.publicKey)
             console.log("퍼블릭키 포스트 성공")
+            toMainPage()
+
         }
         catch (error) {
             console.log(error)
+            alert("Public Key를 확인해주세요")
         }
     }
 
