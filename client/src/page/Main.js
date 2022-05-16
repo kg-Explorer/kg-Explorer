@@ -11,7 +11,7 @@ const Main = () => {
     const [nonce, secNonce] = useState(0)
 
 
-    const handleClick =  async (e) => {
+    const handleClick =  async () => {
         console.log('이거 가냐?')
         try {
             const blocks = await axios.get('http://localhost:3500/block/getblock')
@@ -39,9 +39,9 @@ const Main = () => {
             <p>{timestamp}</p>
             <p>{hash}</p>
             <p>{previousHash}</p>
+            <p>{difficulty}</p>
             <p>{nonce}</p>
             <input type="submit" onClick={handleClick} value="블록 가져와"/>
-
         </>
     )
 }

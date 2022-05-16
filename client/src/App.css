@@ -5,10 +5,3 @@
   flex-direction: column;
 }
 
-.serverTest {
-  width: 500px;
-  height: 200px;
-  border: 1px solid black;
-  border-radius: 30px;
-  padding: 20px;
-}
