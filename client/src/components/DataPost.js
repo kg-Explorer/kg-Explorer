@@ -14,6 +14,7 @@ const DataPost = (props) => {
 
                 data:data,
                 // count : count 이걸로 숫자넣기
+                miner:localStorage.getItem('publicKey')
             }
             )
             props.setPostData(props.postData + 1)
