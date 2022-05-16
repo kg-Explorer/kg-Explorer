@@ -1,7 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Header } from './components';
-import { Main, MyPage, Test, Login, CreateKey, AddressList } from './page'
+import { Main, MyPage, Test, Login, CreateKey, AddressList, AddressDetail } from './page'
 import { Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -19,6 +19,7 @@ function App() {
         <Route path='/login' element={<Login/>} />
         <Route path='/createkey' element={<CreateKey/>} />
         <Route path='/addresslist' element={<AddressList/>} />
+        <Route path='/addressdetail' element={<AddressDetail/>} />
       </Routes>
 
     </div>

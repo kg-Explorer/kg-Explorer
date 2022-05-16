@@ -23,7 +23,7 @@ const Login = () => {
             const blocks = await axios.post('http://localhost:3500/wallet/checkAddress', {
                 data : publicKey,
             })
-            await localStorage.setItem('publicKey', blocks.data.publicKey)
+            localStorage.setItem('publicKey', blocks.data.publicKey)
             console.log("퍼블릭키 포스트 성공")
             toMainPage()
 
