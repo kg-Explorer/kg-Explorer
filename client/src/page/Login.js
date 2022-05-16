@@ -1,7 +1,15 @@
 import React from 'react'
 import { Form } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+
+    const navigate = useNavigate()
+
+    const toCreatekey = () => {
+        navigate('/createkey')
+    }
+
   return (
     <div className='loginMain'> 
         {/* <div className='loginBox'>
@@ -22,15 +30,11 @@ const Login = () => {
         <h4>Welcome Explorer</h4>
         <p>login to your wallet key</p>
         <Form.Group className="mb-3" controlId="formGroupEmail">
-            <Form.Label>Email address</Form.Label>
+            <Form.Label>Wallet Key</Form.Label>
             <Form.Control type="email" placeholder="Enter email" />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formGroupPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
         <div className='loginButton'>
-            <button>Create Key</button>
+            <button onClick={()=>toCreatekey()}> Create Key</button>
             <button>Login</button>
         </div>
         </Form>
