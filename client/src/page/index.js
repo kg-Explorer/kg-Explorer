@@ -1,7 +1,8 @@
 import Main from "./Main"
-import Post from "./Post"
+import MyPage from "./MyPage"
 import Test from "./Test"
 import Login from "./Login"
 import CreateKey from './CreateKey'
+import AddressList from './AddressList'
 
-export { Main, Post, Test, Login , CreateKey}  
+export { Main, MyPage, Test, Login , CreateKey, AddressList}  

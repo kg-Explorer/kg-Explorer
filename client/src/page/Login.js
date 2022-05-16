@@ -13,6 +13,10 @@ const Login = () => {
         navigate('/createkey')
     }
 
+    const toMainPage = () => {
+        navigate('/')
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
@@ -21,9 +25,12 @@ const Login = () => {
             })
             await localStorage.setItem('publicKey', blocks.data.publicKey)
             console.log("퍼블릭키 포스트 성공")
+            toMainPage()
+
         }
         catch (error) {
             console.log(error)
+            alert("Public Key를 확인해주세요")
         }
     }
 
