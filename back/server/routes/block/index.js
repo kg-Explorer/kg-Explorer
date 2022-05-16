@@ -16,4 +16,5 @@ router.post('/autoMiningBlock', blockController.autoMiningBlock)
 
 router.get('/log', blockController.log)
 
+
 module.exports = router;

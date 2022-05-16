@@ -3,7 +3,7 @@ const pool = require('../../db');
 
 const createAddress = async(req, res) => {
     const {privateKey, publicKey} = createPublicKey();
-    const [wallet] = await pool.query(`INSERT INTO wallet(privateKey, publicKey) VALUES('${privateKey}', '${publicKey}')`);
+    const [wallet] = await pool.query(`INSERT INTO wallet(privateKey, publicKey, walletAmount) VALUES('${privateKey}', '${publicKey}', 0)`);
     console.log('publicKey : ' + publicKey)
     res.json({publicKey});
 };
