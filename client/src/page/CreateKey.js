@@ -10,6 +10,8 @@ const CreateKey = () => {
             const blocks = await axios.get('http://localhost:3500/wallet/createAddress')
             //alert("Success Create Key!!")
             console.log("클릭확인")
+            console.log(blocks.data.publicKey)
+            //alert("알람뜨면서 useNavigate를 하면되겠지?")
             //return blocks
         }
         catch (error) {
