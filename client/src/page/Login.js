@@ -38,6 +38,9 @@ const Login = () => {
         setPublicKey(e.target.value)
         console.log(publicKey)
     }
+    const removeLocalStorage = () => {
+        localStorage.removeItem('publicKey');
+    }
 
   return (
     <div className='loginMain'> 
@@ -65,6 +68,9 @@ const Login = () => {
         <div className='loginButton'>
             <button onClick={()=>toCreatekey()}> Create Key</button>
             <button type='submit'>Login</button>
+        </div>
+        <div >
+            <button onClick={removeLocalStorage}>Logout</button>
         </div>
         </Form>
     </div>
