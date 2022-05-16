@@ -14,4 +14,4 @@ const createPublicKey = () => {
     return {privateKey, publicKey};
 }
 
-module.exports = {createPublicKey};
+module.exports = { createPublicKey };
