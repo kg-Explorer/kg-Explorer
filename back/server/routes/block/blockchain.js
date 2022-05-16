@@ -69,10 +69,10 @@ const mineBlock = async (blockData) => {
 }
 
 let autoMining;
-const autoMineBlock = (blockData, count) => {
+const autoMineBlock =  async (blockData, count) => {
     autoMining = 0
     while(autoMining < count) {
-        mineBlock(blockData);
+        await mineBlock(blockData);
         autoMining++;
     }
 }
