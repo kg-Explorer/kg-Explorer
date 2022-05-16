@@ -32,6 +32,11 @@
   
 } */
 
+.addressDetail:hover {
+  background-color: lavender;
+  cursor: pointer;
+}
+
 /* 로그인 페이지 */
 .loginMain {
   border: 1px solid gray;

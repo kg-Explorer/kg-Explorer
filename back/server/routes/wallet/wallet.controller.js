@@ -11,7 +11,9 @@ const createAddress = async(req, res) => {
 const checkAddress = async (req, res) => {
     console.log(req.body.data);
     const [wallet] = await pool.query(`SELECT * FROM wallet WHERE publicKey='${req.body.data}'`)
-    res.send('post test2')
+    console.log('publicKey : ' + req.body.data)
+    const publicKey = req.body.data;
+    res.json({publicKey});
 }
 
 const addressAll = async (req, res) => {
