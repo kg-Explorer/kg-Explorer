@@ -22,10 +22,8 @@ const txSend = async (req, res) => {
 
 const txRead = async (req, res) => {
     // 거래 다 읽어오기
-    // console.log('txRead : ' + req.body.data)
     const [result] = await pool.query(`SELECT * FROM tx WHERE (txFrom='${req.body.data}' OR txTo='${req.body.data}');`)
-    console.log("txRead")
-    console.log(result)
+    console.log("txRead : " + result)
     res.json(result)
 };
 
