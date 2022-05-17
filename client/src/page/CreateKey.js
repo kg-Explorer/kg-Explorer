@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
+import { Form, Button } from 'react-bootstrap'
 
 const CreateKey = () => {
 
@@ -11,13 +12,11 @@ const CreateKey = () => {
 
         try {
             const blocks = await axios.get('http://localhost:3500/wallet/createAddress')
-            //alert("Success Create Key!!")
+
             console.log("클릭확인")
             console.log(blocks.data.publicKey)
             setPublicKey(blocks.data.publicKey)
             
-            //alert("알람뜨면서 useNavigate를 하면되겠지?")
-            //return blocks
         }
         catch (error) {
             console.log(error)
@@ -35,17 +34,22 @@ const CreateKey = () => {
       } 
 
   return (
-    <div>
-        <h4>Are you sure create public key?</h4>
-        <p>Press Button !!</p>
-        <button onClick={()=>{createKey()}}>Create key</button>
-        <p>==================</p>
-        <h4>Your Publickey Is..</h4>
-        <div>
-            <p>{publicKey}</p>
-            <button onClick={() => clickCopy()}>Copy</button>
+
+    <div className='login'>
+        <div className='loginMain'> 
+            <Form>
+                <h4>Are you sure create public key?</h4>
+                <p>Press Button !!</p>
+                <Button variant='dark' onClick={()=>{createKey()}} >Create Key</Button>
+            <div className='loginKey'>
+            <h4>Your Publickey Is..</h4>
+                <p>{publicKey.substr(0,15)} ... {publicKey.slice(-15)}</p>
+                <Button variant='dark' onClick={() => clickCopy()}>Copy</Button>
+            </div>
+            </Form>
         </div>
     </div>
+
   )
 }
 

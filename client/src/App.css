@@ -1,51 +1,95 @@
 .App {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.serverTest {
-  width: 500px;
-  height: 200px;
-  border: 1px solid black;
-  border-radius: 30px;
-  padding: 20px;
-}
-
-/* .mainTable {
+  background: linear-gradient(lightgray, white);
   width: 100vw;
-  border: 1px solid black;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-} */
+  height: 100vh;
+}
 
+/* Hearder Page */
 .navBar {
   height: 8vh;
 }
 
-/* .wallet {
-  border: 2px solid white;
-  justify-content: end;
-  
-} */
+/* Main Page */
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
-.addressDetail:hover {
+.main p4{
+  font-weight: bold;
+}
+
+.mainTable {
+  width: 60vw;
+}
+
+.mainSide {
+  display: flex;
+}
+
+.mainSideData {
+  width: 30vw;
+  border: 1px solid gray;
+  border-radius: 30px;
+  padding: 55px;
+  margin: 30px;
+  box-shadow: 5px 5px 5px 5px lightgray;
+}
+
+.mainSideData h4{
+  font-weight: bold;
+}
+
+
+/* addressList */
+.addressList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.addressTable {
+  width: 60vw;
+}
+
+.addressTableTr {
+  vertical-align: middle;
+}
+
+.addressTableTd:hover {
   background-color: lavender;
   cursor: pointer;
 }
 
-/* 로그인 페이지 */
-.loginMain {
-  border: 1px solid gray;
-  border-radius: 30px;
-  width: 600px;
-  height: 300px;
+/* Login, CreateKey Page */
+.login {
+  width: 100vw;
+  height: calc(100vh - 58px);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.loginMain {
+  border: 1px solid gray;
+  border-radius: 30px;
+  width: 700px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 5px 5px 5px lightgray;
+}
+
+.login input {
+  width: 400px;
+}
+
+.login h4 {
+  font-weight: bold;
 }
 
 .loginButton {
@@ -53,83 +97,47 @@
   justify-content: space-between;
 }
 
-.loginBox {
-  width: 60vw;
-  height: 40vh;
-  border: 2px solid gray;
-  border-radius: 30px;
-  display: flex;
-  flex-direction: column;
+.loginKey {
+  padding-top: 40px;
 }
 
-.loginHead {
-  border: 1px solid black;
-  width: 60vw;
-  height: 10vh;
-  padding: 10px;
-  float: left;
-}
-
-.loginInput {
-  border: 1px solid black;
-  width: 60vw;
-  height: 20vh;
-  padding: 20px;
-}
-
-.loginSubmit {
-  border: 1px solid black;
-  width: 60vw;
-  height: 10vh;
-  padding: 10px;
-}
-
-/* 테스트 페이지  */
-.testContainer {
+/* Datas, Txs Page  */
+.detailContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 10px solid greenyellow;
-  height: 92vh;
 }
 
-.input {
+.detailInput {
   width: 80vw;
   padding: 30px;
-  border: 2px solid black;
+  border: 1px solid gray;
+  border-radius: 30px;
+  box-shadow: 5px 5px 5px 5px lightgray;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-.middleBoxCotainer{
+.detailInput h5{
+  font-weight: bold;
+}
+
+.detailBoxContainer {
   width: 80vw;
-  border: 2px solid black;
-  display: flex;
-  padding: 15px;
+  border: 1px solid gray;
+  border-radius: 30px;
+  box-shadow: 5px 5px 5px 5px lightgray;
 }
 
-.middle {
-  border: 2px solid pink;
-  width: 30vw;
-  height: 100px;
-  margin: 5px;
-}
-
-.boxContainer {
-  width: 80vw;
-  border: 2px solid black;
-  display: flex;
+.detailBoxContainer h5 {
+  font-weight: bold;
 }
 
 .box1 {
-  border: 1px solid red;
-  margin: 20px;
-  width: 600px;
-  height: 300px;
+  margin: 40px;
 }
 
 .box2 {
-  border: 1px solid blue;
-  margin: 20px;
-  width: 600px;
-  height: 300px;
+  margin: 40px;
 }

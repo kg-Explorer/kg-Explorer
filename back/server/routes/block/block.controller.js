@@ -28,7 +28,10 @@ const miningBlock = (req, res) => {
 }
 
 const autoMiningBlock = (req, res) => {
-    res.send(autoMineBlock(req.body.data, req.body.count));
+    // res.send(autoMineBlock(req.body.data, req.body.publicKey, req.body.count));
+    if(autoMineBlock(req.body.data, req.body.publicKey, req.body.count)) {
+        res.send('success')
+    }
 }
 
 const log = (req, res) => {

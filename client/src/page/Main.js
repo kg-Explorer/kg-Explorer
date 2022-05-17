@@ -34,44 +34,49 @@ const Main = () => {
     },[postData])
 
     return (
-        <>
-            <h2>블록 가져오기!!!</h2>
-
-            <Table striped bordered hover size="sm" className="mainTable">
-                <thead>
-                <tr>
-                    <th>BLOCK#</th>
-                    <th>Data</th>
-                    <th>Timestamp</th>
-                    <th>Hash</th>
-                    <th>PreviousHash</th>
-                    <th>Difficulty</th>
-                    <th>Nonce</th>
-                </tr>
-                </thead>
-                <tbody>
-                {
-                    getBlock === null 
-                    ? false 
-                    :
-                    getBlock.map( (number, index) => {
-                        return <tr key={index}>
-                            <td>{number.blockIndex}</td>
-                            <td>{number.data}</td>
-                            <td>{number.timestamp}</td>
-                            <td>{(number.hash).substr(0, 6)}...{(number.hash).slice(-6)}</td>
-                            <td>{(number.previousHash).substr(0, 6)}...{(number.previousHash).slice(-6)}</td>
-                            <td>{number.difficulty}</td>
-                            <td>{number.nonce}</td>
-                        </tr>
-                    })
-                }
-                </tbody>
-            </Table>
-            <DataPost postData={postData} setPostData={setPostData}/>
-            <AutoDataPost postData={postData} setPostData={setPostData}/>
-
-        </>
+        <div className="main">
+            <div className="mainSide">
+                <div className="mainSideData">
+                    <DataPost postData={postData} setPostData={setPostData}/>
+                </div>
+                <div className="mainSideData">
+                    <AutoDataPost postData={postData} setPostData={setPostData}/>
+                </div>
+            </div>
+            <div className="mainTable">
+                <Table striped bordered hover size="sm">
+                    <thead>
+                    <tr>
+                        <th>BLOCK#</th>
+                        <th>Data</th>
+                        <th>Timestamp</th>
+                        <th>Hash</th>
+                        <th>PreviousHash</th>
+                        <th>Difficulty</th>
+                        <th>Nonce</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {
+                        getBlock === null 
+                        ? false 
+                        :
+                        getBlock.map( (number, index) => {
+                            return <tr key={index}>
+                                <td>{number.blockIndex}</td>
+                                <td>{number.data}</td>
+                                <td>{number.timestamp}</td>
+                                <td>{(number.hash).substr(0, 6)}...{(number.hash).slice(-6)}</td>
+                                <td>{(number.previousHash).substr(0, 6)}...{(number.previousHash).slice(-6)}</td>
+                                <td>{number.difficulty}</td>
+                                <td>{number.nonce}</td>
+                            </tr>
+                        })
+                    }
+                    </tbody>
+                </Table>
+            </div>
+        </div>
     )
 }
 
