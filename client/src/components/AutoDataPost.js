@@ -2,6 +2,7 @@ import React from 'react'
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { Form, Button } from 'react-bootstrap'
 
 const AutoDataPost = (props) => {
     const navigate = useNavigate();
@@ -14,7 +15,7 @@ const AutoDataPost = (props) => {
         if(localStorage.getItem('publicKey') !== null){
             try {
                 for(let i=0; i < count; i++) {
-                    const blocks = await axios.post('http://localhost:3500/block/miningBlock', {
+                    await axios.post('http://localhost:3500/block/miningBlock', {
 
                         data:data,
                         //count:i,
@@ -43,12 +44,12 @@ const AutoDataPost = (props) => {
 
   return (
     <>
-    <h2>자동 블록 만들기!!!</h2>
-    <form onSubmit={handleSubmit} method="post">
-      <input onChange={changeData} type="text" name="data" value={data}/>
-      <input onChange={changeCount} type="number" name="count" value={count}/>
-      <input type="submit" value="블록 만들어와" />
-    </form>
+    <h4>Create Auto Block</h4>
+    <Form onSubmit={handleSubmit} method="post">
+      <Form.Control onChange={changeData} type="text" placeholder="data" value={data}/>
+      <Form.Control onChange={changeCount} type="number" value={count}/>
+      <Button variant='dark' type='submit'>Click</Button>
+    </Form>
   </>
   )
 }

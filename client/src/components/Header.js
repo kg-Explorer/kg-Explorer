@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Navbar, Nav, Container } from 'react-bootstrap'
-import { faWallet, faGlobeEurope } from '@fortawesome/free-solid-svg-icons'
+import { faWallet, faGlobeEurope, faList, faAddressCard, faCube } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Header = () => {
@@ -20,10 +20,10 @@ const Header = () => {
                 <Navbar.Brand href="/"><FontAwesomeIcon icon={faGlobeEurope} /> Explorer </Navbar.Brand>
                 
                 <Nav className="me-auto">
-                    <Nav.Link onClick={() => { navigate('/')}}>Main</Nav.Link>
-                    <Nav.Link onClick={() => { navigate('/addresslist')}}>AddressList</Nav.Link>
-                    <Nav.Link onClick={() => { navigate('/transaction')}}>transaction</Nav.Link>
-                    <Nav.Link onClick={() => { navigate('/addressdetail')}}>AddressDetail</Nav.Link>
+                    <Nav.Link onClick={() => { navigate('/')}}><FontAwesomeIcon icon={faCube}/> Blocks</Nav.Link>
+                    <Nav.Link onClick={() => { navigate('/addresslist')}}><FontAwesomeIcon icon={faAddressCard}/> AddressList</Nav.Link>
+                    <Nav.Link onClick={() => { navigate('/addressdetail')}}><FontAwesomeIcon icon={faList}/> Datas & Txs</Nav.Link>
+                    {/* <Nav.Link onClick={() => { navigate('/addressdetail')}}>AddressDetail</Nav.Link> */}
                     {/*<div className='wallet'> <Nav.Link onClick={() => { navigate('/login')}}><FontAwesomeIcon icon={faWallet} /> Login</Nav.Link></div> */}
                     { localStorage.getItem("publicKey") === null ? 
                         <div className='wallet'><Nav.Link onClick={() => { navigate('/login')}}><FontAwesomeIcon icon={faWallet} /> Login</Nav.Link></div> : 

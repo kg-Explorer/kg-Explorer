@@ -2,6 +2,7 @@ import React from 'react'
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { Form, Button } from 'react-bootstrap'
 
 const DataPost = (props) => {
     const navigate = useNavigate();
@@ -17,7 +18,7 @@ const DataPost = (props) => {
             // } else {
             // 로그인 페이지로 이동시켜버리기
             // }
-              const blocks = await axios.post('http://localhost:3500/block/miningBlock', {
+              await axios.post('http://localhost:3500/block/miningBlock', {
 
                   data:data,
                   // count : count 이걸로 숫자넣기
@@ -40,11 +41,12 @@ const DataPost = (props) => {
 
   return (
     <>
-    <h2>블록 만들기!!!</h2>
-    <form onSubmit={handleSubmit} method="post">
-      <input onChange={changeData} type="text" name="data" value={data}/>
-      <input type="submit" value="블록 만들어와" />
-    </form>
+    <h4>Create Block</h4>
+    <Form onSubmit={handleSubmit} method="post">
+      {/* <input onChange={changeData} type="text" name="data" value={data}/> */}
+      <Form.Control onChange={changeData} type="text" placeholder="data" value={data}/>
+      <Button variant='dark' type='submit'>Click</Button>
+    </Form>
   </>
   )
 }
