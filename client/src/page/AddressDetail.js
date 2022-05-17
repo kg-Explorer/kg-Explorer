@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import axios from "axios";
 import { useState } from "react";
 import { useLocation } from "react-router";
@@ -8,20 +8,46 @@ const AddressDetail = () => {
 
   const { state } = useLocation();
   console.log(state);
+  //const [publicKey , setPublickey] = useState('')
+  const [postData, setPostData] = useState(0)
+  const [test, setTest] = useState('')
   
   const searchPublicKey = async () => {
     try {
-        const blocks = await axios.post('http://localhost:3500/block/miningBlock', {
+        const blocks = await axios.post('http://localhost:3500/transaction/txRead', {
             data:state,
             
             //publicKey:localStorage.getItem('publicKey')
         }
         )
+        console.log(blocks)
+        setTest(blocks)
+        setPostData(postData + 1)
     }
     catch (error) {
         console.log(error)
     }
   }
+
+  // const changeKey = () => {
+  //   setPublickey(state)
+  // }
+
+  // const readTxData = async () => {
+  //     try {
+  //       const blocks = await axios.get('http://localhost:3500/transaction/txView') 
+
+
+  //   }
+  //   catch (error) {
+  //       console.log(error)
+  //   }
+  // }
+
+  useEffect( () => {
+    //changeKey()
+    console.log(test)
+  },[test])
 
   return (
     <div className='testContainer'>
@@ -38,6 +64,7 @@ const AddressDetail = () => {
           </InputGroup>
         </Form>
       </div>
+      {test}
       <div className='middleBoxCotainer'>
         <div className='middle'>11</div>
         <div className='middle'>22</div>
