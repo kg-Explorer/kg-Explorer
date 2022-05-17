@@ -11,7 +11,7 @@ const AutoDataPost = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         console.log('post가?')
-        if(localStorage.getItem('publicKey' !== null)){
+        if(localStorage.getItem('publicKey') !== null){
             try {
                 for(let i=0; i < count; i++) {
                     const blocks = await axios.post('http://localhost:3500/block/miningBlock', {

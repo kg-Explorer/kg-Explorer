@@ -26,7 +26,7 @@ const Login = () => {
             console.log(blocks.data);
             // console.log(blocks.data.publicKey);
             if(blocks.data) {
-                localStorage.setItem('publicKey', blocks.data.publicKey)
+                localStorage.setItem('publicKey', publicKey)
                 console.log("address check success")
                 toMainPage()
             } else {

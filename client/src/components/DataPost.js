@@ -10,7 +10,7 @@ const DataPost = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         console.log('post가?')
-        if(localStorage.getItem('publicKey' !== null)){
+        if(localStorage.getItem('publicKey') !== null){
           try {
             // if(localStorage.getItem('publicKey')){
             // 여기서 mine block

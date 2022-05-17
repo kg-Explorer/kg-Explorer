@@ -25,10 +25,11 @@ const AddressDetail = () => {
           )
           //const blockData = [blocks]
           console.log(blocks)
-          console.log(blocks.data)
-          console.log(blocks.data[0].txAmount)
+          console.log(blocks.data.txData)
+          // console.log(blocks.data.blockData) -> 이 address가 minging 한 블록들 정보 
+          //console.log(blocks.data[0].txAmount)
           // console.log(blockData)
-          setTest(blocks.data)
+          setTest(blocks.data.txData)
         //setPostData(postData + 1)
     }
     catch (error) {
