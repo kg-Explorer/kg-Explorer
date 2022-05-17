@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from "axios";
-import { Form } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
@@ -24,7 +24,7 @@ const Login = () => {
                 data : publicKey,
             })
             console.log(blocks.data);
-            // console.log(blocks.data.publicKey);
+
             if(blocks.data) {
                 localStorage.setItem('publicKey', publicKey)
                 console.log("address check success")
@@ -50,38 +50,22 @@ const Login = () => {
     // }
 
   return (
-    <div className='loginMain'> 
-        {/* <div className='loginBox'>
-            <div className='loginHead'> 
-                <h4>Welcome Explorer</h4>
-                <p>login to your wallet key</p>
+    <div className='login'>
+        <div className='loginMain'> 
+            <Form onSubmit={handleSubmit} method='post'>
+            <h4>Welcome Explorer</h4>
+            <p>login to your wallet key</p>
+            <Form.Group className="mb-3" controlId="formGroupEmail">
+                <Form.Label>Wallet Key</Form.Label>
+                <Form.Control onChange={changePublicKey} type="text" placeholder="public key" value={publicKey}/>
+            </Form.Group>
+            <div className='loginButton'>
+                <Button variant='dark' onClick={()=>toCreatekey()}> Create Key</Button>
+                <Button variant='dark' type='submit'>Login</Button>
             </div>
-            <div className='loginInput'> 
-                <p>Wallet Key</p>
-                <input placeholder="key" />
-            </div>
-            <div className='loginSubmit'> 
-                <button>Login</button>
-            </div>
-        </div> */}
-
-        <Form onSubmit={handleSubmit} method='post'>
-        <h4>Welcome Explorer</h4>
-        <p>login to your wallet key</p>
-        <Form.Group className="mb-3" controlId="formGroupEmail">
-            <Form.Label>Wallet Key</Form.Label>
-            <Form.Control onChange={changePublicKey} type="text" placeholder="public key" value={publicKey}/>
-        </Form.Group>
-        <div className='loginButton'>
-            <button onClick={()=>toCreatekey()}> Create Key</button>
-            <button type='submit'>Login</button>
+            </Form>
         </div>
-        {/* <div >
-            <button onClick={removeLocalStorage}>Logout</button>
-        </div> */}
-        </Form>
     </div>
-    
   )
 }
 

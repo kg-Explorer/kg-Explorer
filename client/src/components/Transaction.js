@@ -2,6 +2,8 @@ import React from 'react'
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
+import { Form, Button } from 'react-bootstrap'
+
 
 const Transaction = () => {
     const navigate = useNavigate();
@@ -29,6 +31,7 @@ const Transaction = () => {
                     alert("잔액이 부족합니다")
                 } else {
                     alert("트랜잭션 성공")
+                    navigate('/addresslist')
                 }
             }
             catch (error) {
@@ -54,13 +57,13 @@ const Transaction = () => {
 
   return (
     <>
-    <h2>거래를 해볼까나??</h2>
-    <form onSubmit={handleSubmit} method="post">
+    <h5># Make Transaction</h5>
+    <Form onSubmit={handleSubmit} method="post">
       {/* <input onChange={changeTxFrom} type="text" name="txFrom" value={txFrom}/> */}
-      <input onChange={changeTxTo} type="text" name="txTo" value={txTo}/>
-      <input onChange={changeAmount} type="number" name='amount' value={amount} />
-      <input type="submit" value="거래고래거래" />
-    </form>
+      <Form.Control onChange={changeTxTo} type="text" name="txTo" placeholder='To Address' value={txTo}/>
+      <Form.Control onChange={changeAmount} type="number" name='amount' value={amount} />
+      <Button variant='dark' type="submit">Transaction</Button>
+    </Form>
   </>
   )
 }

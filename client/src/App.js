@@ -1,21 +1,19 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Header } from './components';
-import { Main, Transaction, Test, Login, CreateKey, AddressList, AddressDetail } from './page'
+import { Main, Login, CreateKey, AddressList, AddressDetail } from './page'
 import { Routes, Route } from 'react-router-dom'
 
 function App() {
 
   return (
-    <div>
+    <div className='App'>
 
       <Header />
           
       {/* Route stage */}
       <Routes>
         <Route path='/' element={<Main/>} />
-        <Route path='/transaction' element={<Transaction/>} />
-        <Route path='/test' element={<Test/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/createkey' element={<CreateKey/>} />
         <Route path='/addresslist' element={<AddressList/>} />

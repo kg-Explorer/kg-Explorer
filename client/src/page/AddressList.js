@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from "axios"
-import { Table } from 'react-bootstrap'
+import { Table, Button } from 'react-bootstrap'
 import { useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom'
 
@@ -37,34 +37,36 @@ const AddressList = () => {
       } 
 
   return (
-    <div>
+    <div className='addressList'>
         <h2>AddressList</h2>
-        <Table striped bordered hover size="sm">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Address</th>
+        <div className='addressTable'>
+            <Table striped bordered hover size="sm">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Address</th>
 
-            </tr>
-            </thead>
-            <tbody >
-                {
-                    address === null 
-                    ? false 
-                    :
-                    address.map( (data, index) => {
-                        return <tr key={index}>
-                            <td>{index}</td>
-                            <td className='addressDetail' onClick={()=> toAddressDetail(data.publicKey)}>
-                                {(data.publicKey).substr(0, 15)}...{(data.publicKey).slice(-15)}
-                                
-                            </td>
-                            <td><button onClick={() => clickCopy(data.publicKey)}>Copy</button></td>
-                        </tr>
-                    })
-                }
-            </tbody>
-        </Table>
+                </tr>
+                </thead>
+                <tbody >
+                    {
+                        address === null 
+                        ? false 
+                        :
+                        address.map( (data, index) => {
+                            return <tr key={index} className='addressTableTr'>
+                                <td>{index}</td>
+                                <td className='addressTableTd' onClick={()=> toAddressDetail(data.publicKey)}>
+                                    {(data.publicKey).substr(0, 15)}...{(data.publicKey).slice(-15)}
+                                    
+                                </td>
+                                <td><Button variant='dark' onClick={() => clickCopy(data.publicKey)}>Copy</Button></td>
+                            </tr>
+                        })
+                    }
+                </tbody>
+            </Table>
+        </div>
     </div>
   )
 }
