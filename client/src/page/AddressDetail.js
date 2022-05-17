@@ -2,7 +2,7 @@ import React from 'react'
 import axios from "axios";
 import { useState } from "react";
 import { useLocation } from "react-router";
-import { Form, InputGroup, FormControl, Button } from 'react-bootstrap'
+import { Form, InputGroup, FormControl, Button, Table } from 'react-bootstrap'
 import { Transaction } from '../components';
 
 const AddressDetail = () => {
@@ -10,7 +10,8 @@ const AddressDetail = () => {
 
   const { state } = useLocation();
   console.log(state);
-  const [test, setTest] = useState(null)
+  const [txData, setTxData] = useState(null)
+  const [blockData, setBlockData] = useState(null)
   
   const searchPublicKey = async (e) => {
     e.preventDefault()
@@ -23,8 +24,10 @@ const AddressDetail = () => {
           )
 
           console.log(blocks)
-          console.log(blocks.data.txData)
-          setTest(blocks.data.txData)
+          console.log("txData : ", blocks.data.txData)
+          console.log("blockData : ", blocks.data.blockData)
+          setTxData(blocks.data.txData)
+          setBlockData(blocks.data.blockData.reverse())
     }
     catch (error) {
         console.log(error)
@@ -33,6 +36,7 @@ const AddressDetail = () => {
 
   return (
     <div className='detailContainer'>
+
       <div className='detailInput'>
         <h5> # Search Address Data</h5>
         <Form onSubmit={searchPublicKey}>
@@ -52,20 +56,62 @@ const AddressDetail = () => {
 
       <div className='detailBoxContainer'>
         <div className='box1'>
-          {
-            test === null
-            ? false
-            :
-            <div>
-              <h6> txAmount : {test[0].txAmount} </h6>
-              <h6> txFrom : {(test[0].txFrom).substr(0,10)}...{(test[0].txFrom).slice(-10)}</h6>
-              <h6> txTime : {test[0].txTime} </h6>
-              <h6> txTo : {(test[0].txTo).substr(0,10)}...{(test[0].txTo).slice(-10)} </h6>
-            </div>
-          }
+          <h5># Address Data</h5>
+          <Table striped bordered hover size="sm">
+              <thead>
+              <tr>
+                  <th>TxNum</th>
+                  <th>TxAmount</th>
+                  <th>TxFrom</th>
+                  <th>TxTime</th>
+                  <th>TxTo</th>
+              </tr>
+              </thead>
+              <tbody>
+                  {
+                    txData === null 
+                    ? false 
+                    :
+                    txData.map( (data, index) => {
+                        return <tr key={index}>
+                            <td>{index}</td>
+                            <td>{data.txAmount}</td>
+                            <td>{(data.txFrom).substr(0,10)}...{(data.txFrom).slice(-10)}</td>
+                            <td>{data.txTime}</td>
+                            <td>{(data.txTo).substr(0,10)}...{(data.txTo).slice(-10)}</td>
+                        </tr>
+                    })
+                  }
+                </tbody>
+            </Table>
         </div>
+
         <div className='box2'>
-            box2
+          <h5># Block Data</h5>
+            <Table striped bordered hover size="sm">
+              <thead>
+              <tr>
+                  <th>BlockIndex</th>
+                  <th>Data</th>
+                  <th>Hash</th>
+              </tr>
+              </thead>
+              <tbody>
+                {
+                    blockData === null 
+                    ? false 
+                    :
+                    blockData.map( (data, index) => {
+                        return <tr key={index}>
+                            <td>{data.blockIndex}</td>
+                            <td>{data.data}</td>
+                            <td>{data.hash}</td>
+                            {/* <td>{(data.hash).substr(0,10)}...{(data.hash).slice(-10)}</td> */}
+                        </tr>
+                    })
+                }
+              </tbody>
+          </Table>              
         </div>
       </div>
     </div>

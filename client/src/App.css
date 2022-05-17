@@ -107,7 +107,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 92vh;
 }
 
 .detailInput {
@@ -129,19 +128,16 @@
   border: 1px solid gray;
   border-radius: 30px;
   box-shadow: 5px 5px 5px 5px lightgray;
-  display: flex;
+}
+
+.detailBoxContainer h5 {
+  font-weight: bold;
 }
 
 .box1 {
-  border: 1px solid red;
-  margin: 20px;
-  width: 600px;
-  height: 300px;
+  margin: 40px;
 }
 
 .box2 {
-  border: 1px solid blue;
-  margin: 20px;
-  width: 600px;
-  height: 300px;
+  margin: 40px;
 }
