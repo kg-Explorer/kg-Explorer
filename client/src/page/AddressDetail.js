@@ -36,26 +36,6 @@ const AddressDetail = () => {
     }
   }
 
-  // const changeKey = () => {
-  //   setPublickey(state)
-  // }
-
-  // const readTxData = async () => {
-  //     try {
-  //       const blocks = await axios.get('http://localhost:3500/transaction/txView') 
-
-
-  //   }
-  //   catch (error) {
-  //       console.log(error)
-  //   }
-  // }
-
-  // useEffect( () => {
-  //   //changeKey()
-  //   console.log(test)
-  // },[test])
-
   return (
     <div className='testContainer'>
       <div className='input'>
@@ -79,10 +59,17 @@ const AddressDetail = () => {
       </div>
       <div className='boxContainer'>
         <div className='box1'>
-              <h4> txAmount : {test[0].txAmount}</h4>
+          {
+            test === null
+            ? false
+            :
+            <div>
+              <h4> txAmount : {test[0].txAmount} </h4>
               <h4> txFrom : {(test[0].txFrom).substr(0,10)}...{(test[0].txFrom).slice(-10)}</h4>
               <h4> txTime : {test[0].txTime} </h4>
               <h4> txTo : {(test[0].txTo).substr(0,10)}...{(test[0].txTo).slice(-10)} </h4>
+            </div>
+          }
         </div>
         <div className='box2'>
             box2
