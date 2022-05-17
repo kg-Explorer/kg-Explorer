@@ -27,8 +27,8 @@ const CreateKey = () => {
         navigate('/login')
     }
 
-    const clickCopy = () => {
-        navigator.clipboard.writeText(publicKey)
+    const clickCopy = async () => {
+        await navigator.clipboard.writeText(publicKey)
         alert("주소복사 완료! 로그인 페이지로 이동합니다!")
         toLoginPage()
       } 
