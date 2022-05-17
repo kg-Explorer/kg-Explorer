@@ -3,38 +3,36 @@ import axios from "axios";
 import { useState } from "react";
 
 
-const Transaction = (props) => {
-    const [data, setData] = useState('')
-    const [count, setCount] = useState(0)
+const Transaction = () => {
+    const [txFrom, setTxFrom] = useState('')
+    const [txTo, setTxTo] = useState('')
     const [amount, setAmount] = useState(0)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
         try {
-            console.log('handleSubmit 이거 되냐??')
-            for(let i=0; i < count; i++) {
-                const blocks = await axios.post('http://localhost:3500/transaction/txRead', {
-
-                    data:data,
-                    publicKey:localStorage.getItem('pulicKey')
-
-                }
-                )
-                props.setPostData(props.postData + 1)
-            }
+                const txSend = await axios.post('http://localhost:3500/transaction/txSend', {
+                
+                // 보내사람 주소 
+                txFrom:txFrom,
+                // 받는사람 주소
+                txTo:txTo,
+                // 금액
+                amount:amount
+            })
+            console.log(txSend.data);
         }
         catch (error) {
             console.log(error)
         }
     }
 
-    const changeData = async (e) => {
-        setData(e.target.value)
+    const changeTxFrom = async (e) => {
+        setTxFrom(e.target.value)
     }
 
-    const changeCount = async (e) => {
-        setCount(e.target.value)
+    const changeTxTo = async (e) => {
+        setTxTo(e.target.value)
     }
 
     const changeAmount = async (e) => {
@@ -45,8 +43,8 @@ const Transaction = (props) => {
     <>
     <h2>거래를 해볼까나??</h2>
     <form onSubmit={handleSubmit} method="post">
-      <input onChange={changeData} type="text" name="data" value={data}/>
-      <input onChange={changeCount} type="number" name="count" value={count}/>
+      <input onChange={changeTxFrom} type="text" name="txFrom" value={txFrom}/>
+      <input onChange={changeTxTo} type="text" name="txTo" value={txTo}/>
       <input onChange={changeAmount} type="number" name='amount' value={amount} />
       <input type="submit" value="거래고래거래" />
     </form>

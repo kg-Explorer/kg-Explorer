@@ -2,8 +2,8 @@ import React from 'react'
 import axios from "axios"
 import { Table } from 'react-bootstrap'
 import { useEffect, useState } from "react"
-import { Routes , Route, useNavigate, Link } from 'react-router-dom'
-import AddressDetail from './AddressDetail'
+import { useNavigate } from 'react-router-dom'
+
 
 const AddressList = () => {
 

@@ -7,10 +7,14 @@ const txSend = async (req, res) => {
 
     try {
         console.log('txSend Try : ' + req.body.data)
-        await pool.query(`INSERT INTO tx(txFrom, txTo, txAmount) VALUES('${req.body.publicKey}', '${req.body.data}', '${req.body.amount}');`)
-        await pool.query(`UPDATE wallet SET walletAmount = walletAmount - ${req.body.amount} WHERE publicKey='${req.body.publicKey}';`)
-        await pool.query(`UPDATE wallet SET walletAmount = walletAmount + ${req.body.amount} WHERE publicKey='${req.body.data}';`)
-        res.send('send 성공이다!!!!!!!!!!!!!')
+        
+        const [result] = await pool.query(`INSERT INTO tx(txFrom, txTo, txAmount) VALUES('${req.body.txFrom}', '${req.body.txTo}', '${req.body.amount}');`)
+        const [result2] = await pool.query(`UPDATE wallet SET walletAmount = walletAmount - ${req.body.amount} WHERE publicKey='${req.body.txFrom}';`)
+        const [result3] = await pool.query(`UPDATE wallet SET walletAmount = walletAmount + ${req.body.amount} WHERE publicKey='${req.body.txTo}';`)
+        res.json({result, result2, result3})
+        console.log('txSend')
+        console.log({result, result2, result3})
+        
     } catch (error) {
         console.log(error)
     }
@@ -18,11 +22,15 @@ const txSend = async (req, res) => {
 
 const txRead = async (req, res) => {
     // 거래 다 읽어오기
-    const [txData] = await pool.query(`SELECT * FROM tx WHERE txFrom='${req.body.publicKey}' OR txTo='${req.body.publicKey}';`)
-    const [blockData] = await pool.query(`SELECT * FROM blocks WHERE miner='${req.body.publicKey}'`)
+    const [txData] = await pool.query(`SELECT * FROM tx WHERE txFrom='${req.body.data}' OR txTo='${req.body.data}';`)
+    const [blockData] = await pool.query(`SELECT * FROM blocks WHERE miner='${req.body.data}'`)
     console.log("txRead : " + txData)
     res.json({txData:txData, blockData:blockData})
 };
+
+// const txView = async (req, res) => {
+//     const [result] = await pool.query(`SELECT * FROM tx`)
+// }
 
 module.exports = {
     txSend,
