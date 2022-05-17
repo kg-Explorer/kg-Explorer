@@ -28,8 +28,7 @@ const AddressList = () => {
     },[])
 
     const toAddressDetail = (data) => {
-        navigate('/addressdetail', { state : data})
-        // navigate('/edit', { state: e.target.value });
+        navigate('/addressdetail', { state : data })
     }
 
   return (
@@ -50,24 +49,11 @@ const AddressList = () => {
                     :
                     address.map( (data, index) => {
                         return <tr key={index}>
-                            {/* <Routes>
-                                <Route path='/addressdetail' element={<AddressDetail data={data}/>}/>
-                            </Routes> */}
                             <td>{index}</td>
                             <td className='addressDetail' onClick={()=> toAddressDetail(data.publicKey)}>{(data.publicKey).substr(0, 15)}...{(data.publicKey).slice(-15)}</td>
                         </tr>
                     })
                 }
-
-
-                            {/* <Link to={{
-                                    pathname: '/search',
-                                    state: {
-                                        data1: year,
-                                        data2: title,
-                                        data3: summary
-                                    }
-                            }}> */}
             </tbody>
         </Table>
     </div>

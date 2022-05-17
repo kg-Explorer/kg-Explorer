@@ -18,7 +18,7 @@ const Header = () => {
                     <Nav.Link onClick={() => { navigate('/')}}>Main</Nav.Link>
                     <Nav.Link onClick={() => { navigate('/addresslist')}}>AddressList</Nav.Link>
                     <Nav.Link onClick={() => { navigate('/mypage')}}>MyPage</Nav.Link>
-                    <Nav.Link onClick={() => { navigate('/test')}}>Test</Nav.Link>
+                    <Nav.Link onClick={() => { navigate('/addressdetail')}}>AddressDetail</Nav.Link>
                     <div className='wallet'>
                     <Nav.Link onClick={() => { navigate('/login')}}><FontAwesomeIcon icon={faWallet} /> Login</Nav.Link>
                     </div>

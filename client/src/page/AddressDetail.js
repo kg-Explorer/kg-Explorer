@@ -1,29 +1,42 @@
 import React from 'react'
+import axios from "axios";
+import { useState } from "react";
 import { useLocation } from "react-router";
-import { InputGroup, FormControl } from 'react-bootstrap'
+import { Form, InputGroup, FormControl, Button } from 'react-bootstrap'
 
 const AddressDetail = () => {
 
   const { state } = useLocation();
   console.log(state);
   
-  // const Edit = () => {
-  //     const { state } = useLocation();
-  //     console.log(state);
-  // }
+  const searchPublicKey = async () => {
+    try {
+        const blocks = await axios.post('http://localhost:3500/block/miningBlock', {
+            data:state,
+            
+            //publicKey:localStorage.getItem('publicKey')
+        }
+        )
+    }
+    catch (error) {
+        console.log(error)
+    }
+  }
 
   return (
     <div className='testContainer'>
       <div className='input'>
-        <InputGroup className="mb-3">
-          <FormControl
-            placeholder="Recipient's username"
-            aria-label="Recipient's username"
-            aria-describedby="basic-addon2"
-            defaultValue={state}
-          />
-          <InputGroup.Text id="basic-addon2">Search</InputGroup.Text>
-        </InputGroup>
+        <Form onSubmit={searchPublicKey}>
+          <InputGroup className="mb-3">
+            <FormControl
+              placeholder="Recipient's username"
+              aria-label="Recipient's username"
+              aria-describedby="basic-addon2"
+              defaultValue={state}
+            />
+            <Button type='submit'> Search </Button>
+          </InputGroup>
+        </Form>
       </div>
       <div className='middleBoxCotainer'>
         <div className='middle'>11</div>
