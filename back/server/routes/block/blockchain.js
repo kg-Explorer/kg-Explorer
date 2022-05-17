@@ -63,20 +63,25 @@ const mineBlock = async (blockData, publicKey) => {
     const newBlock = createBlock(blockData);
     if(addBlock(newBlock, getLatestBlock())) {
         console.log('mineBlock : ' + publicKey)
-        await pool.query(`INSERT INTO blocks(blockIndex, data, timestamp, hash, previousHash, difficulty, nonce, miner) VALUES(${newBlock.blockIndex},'${blockData}', '${newBlock.timestamp}', '${newBlock.hash}','${newBlock.previousHash}',${newBlock.difficulty}, ${newBlock.nonce}, '${publicKey}')`);
-        await pool.query(`UPDATE wallet SET walletAmount = walletAmount + 10 WHERE publicKey='${publicKey}'`)
+        try {
+            await pool.query(`INSERT INTO blocks(blockIndex, data, timestamp, hash, previousHash, difficulty, nonce, miner) VALUES(${newBlock.blockIndex},'${blockData}', '${newBlock.timestamp}', '${newBlock.hash}','${newBlock.previousHash}',${newBlock.difficulty}, ${newBlock.nonce}, '${publicKey}')`);
+            await pool.query(`UPDATE wallet SET walletAmount = walletAmount + 10 WHERE publicKey='${publicKey}'`)   
+        } catch (error) {
+            console.error(error)
+        }
     } else {
         console.log('문제 발생하여 블록 생성 실패')
     }
 }
 
 let autoMining;
-const autoMineBlock =  async (blockData, count) => {
+const autoMineBlock =  async (blockData, publicKey, count) => {
     autoMining = 0
     while(autoMining < count) {
-        await mineBlock(blockData);
+        await mineBlock(blockData, publicKey);
         autoMining++;
     }
+    return true;
 }
 
 const isValidBlockStructure = (newBlock) => {
