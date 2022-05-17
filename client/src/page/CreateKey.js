@@ -28,6 +28,11 @@ const CreateKey = () => {
         navigate('/login')
     }
 
+    const clickCopy = () => {
+        navigator.clipboard.writeText(publicKey)
+        alert("주소복사 완료! 로그인 페이지로 이동합니다!")
+        toLoginPage()
+      } 
 
   return (
     <div>
@@ -36,8 +41,10 @@ const CreateKey = () => {
         <button onClick={()=>{createKey()}}>Create key</button>
         <p>==================</p>
         <h4>Your Publickey Is..</h4>
-        <p>{publicKey}</p>
-        <button onClick={toLoginPage}>Go to Login!</button>
+        <div>
+            <p>{publicKey}</p>
+            <button onClick={() => clickCopy()}>Copy</button>
+        </div>
     </div>
   )
 }
