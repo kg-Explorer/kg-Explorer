@@ -31,8 +31,8 @@ const AddressList = () => {
         navigate('/addressdetail', { state : data })
     }
 
-    const clickCopy = (publicKey) => {
-        navigator.clipboard.writeText(publicKey)
+    const clickCopy = async (publicKey) => {
+        await navigator.clipboard.writeText(publicKey)
         alert("주소복사 완료!")
       } 
 
