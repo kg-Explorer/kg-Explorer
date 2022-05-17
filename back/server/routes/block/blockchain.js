@@ -59,20 +59,22 @@ const addBlock = (newBlock, previousBlock) => {
     return false;
 }
 
-const mineBlock = async (blockData) => {
+const mineBlock = async (blockData, publicKey) => {
     const newBlock = createBlock(blockData);
     if(addBlock(newBlock, getLatestBlock())) {
-        await pool.query(`INSERT INTO blocks(blockIndex, data, timestamp, hash, previousHash, difficulty, nonce) VALUES(${newBlock.blockIndex},'${blockData}', '${newBlock.timestamp}', '${newBlock.hash}','${newBlock.previousHash}',${newBlock.difficulty}, ${newBlock.nonce})`);
+        console.log('mineBlock : ' + publicKey)
+        await pool.query(`INSERT INTO blocks(blockIndex, data, timestamp, hash, previousHash, difficulty, nonce, miner) VALUES(${newBlock.blockIndex},'${blockData}', '${newBlock.timestamp}', '${newBlock.hash}','${newBlock.previousHash}',${newBlock.difficulty}, ${newBlock.nonce}, '${publicKey}')`);
+        await pool.query(`UPDATE wallet SET walletAmount = walletAmount + 10 WHERE publicKey='${publicKey}'`)
     } else {
         console.log('문제 발생하여 블록 생성 실패')
     }
 }
 
 let autoMining;
-const autoMineBlock = (blockData, count) => {
+const autoMineBlock =  async (blockData, count) => {
     autoMining = 0
     while(autoMining < count) {
-        mineBlock(blockData);
+        await mineBlock(blockData);
         autoMining++;
     }
 }
@@ -165,18 +167,22 @@ const getAdjustmentDifficulty = () => {
     const expectedTime = DIFFICULTY_ADJUSTMENT_INTERVAL * BLOCK_GENERATOIN_INTERVAL;
     let idx = prevAdjustedBlock.blockIndex;
 
-    if(elapsedTime > (expectedTime * 2)) {
-        const newLog = new Log(idx, expectedTime, elapsedTime, "낮추기", latestBlock.difficulty - 1)
-        difficultyChangeLog.push(newLog)
-        return latestBlock.difficulty - 1;
-    } else if(elapsedTime < (expectedTime / 2)) {
-        const newLog = new Log(idx,expectedTime, elapsedTime, "높이기", latestBlock.difficulty + 1)
-        difficultyChangeLog.push(newLog)
-        return latestBlock.difficulty + 1;
+    if( latestBlock.difficulty > 5 ) {
+        if(elapsedTime > (expectedTime * 2)) {
+            const newLog = new Log(idx, expectedTime, elapsedTime, "낮추기", latestBlock.difficulty - 1)
+            difficultyChangeLog.push(newLog)
+            return latestBlock.difficulty - 1;
+        } else if(elapsedTime < (expectedTime / 2)) {
+            const newLog = new Log(idx,expectedTime, elapsedTime, "높이기", latestBlock.difficulty + 1)
+            difficultyChangeLog.push(newLog)
+            return latestBlock.difficulty + 1;
+        } else {
+            const newLog = new Log(idx, expectedTime, elapsedTime, "고정", latestBlock.difficulty)
+            difficultyChangeLog.push(newLog)
+            return latestBlock.difficulty;
+        }
     } else {
-        const newLog = new Log(idx, expectedTime, elapsedTime, "고정", latestBlock.difficulty)
-        difficultyChangeLog.push(newLog)
-        return latestBlock.difficulty;
+        return latestBlock.difficulty + 1;
     }
 }
 
