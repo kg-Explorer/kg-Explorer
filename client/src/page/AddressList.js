@@ -2,7 +2,7 @@ import React from 'react'
 import axios from "axios"
 import { Table } from 'react-bootstrap'
 import { useEffect, useState } from "react"
-import { Routes , Route, useNavigate } from 'react-router-dom'
+import { Routes , Route, useNavigate, Link } from 'react-router-dom'
 import AddressDetail from './AddressDetail'
 
 const AddressList = () => {
@@ -27,8 +27,8 @@ const AddressList = () => {
         getAddressFunc()
     },[])
 
-    const toAddressDetail = () => {
-        navigate('/addressdetail')
+    const toAddressDetail = (data) => {
+        navigate('/addressdetail', { state : data })
     }
 
   return (
@@ -50,10 +50,7 @@ const AddressList = () => {
                     address.map( (data, index) => {
                         return <tr key={index}>
                             <td>{index}</td>
-                            <td className='addressDetail' onClick={toAddressDetail}>{(data.publicKey).substr(0, 15)}...{(data.publicKey).slice(-15)}</td>
-                            <Routes>
-                            <Route path='/addressdetail' element={<AddressDetail data={data}/>}/>
-                            </Routes>
+                            <td className='addressDetail' onClick={()=> toAddressDetail(data.publicKey)}>{(data.publicKey).substr(0, 15)}...{(data.publicKey).slice(-15)}</td>
                         </tr>
                     })
                 }
