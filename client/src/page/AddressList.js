@@ -31,6 +31,11 @@ const AddressList = () => {
         navigate('/addressdetail', { state : data })
     }
 
+    const clickCopy = (publicKey) => {
+        navigator.clipboard.writeText(publicKey)
+        alert("주소복사 완료!")
+      } 
+
   return (
     <div>
         <h2>AddressList</h2>
@@ -50,7 +55,11 @@ const AddressList = () => {
                     address.map( (data, index) => {
                         return <tr key={index}>
                             <td>{index}</td>
-                            <td className='addressDetail' onClick={()=> toAddressDetail(data.publicKey)}>{(data.publicKey).substr(0, 15)}...{(data.publicKey).slice(-15)}</td>
+                            <td className='addressDetail' onClick={()=> toAddressDetail(data.publicKey)}>
+                                {(data.publicKey).substr(0, 15)}...{(data.publicKey).slice(-15)}
+                                
+                            </td>
+                            <td><button onClick={() => clickCopy(data.publicKey)}>Copy</button></td>
                         </tr>
                     })
                 }
