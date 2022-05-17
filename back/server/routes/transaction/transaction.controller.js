@@ -22,10 +22,24 @@ const txSend = async (req, res) => {
 
 const txRead = async (req, res) => {
     // 거래 다 읽어오기
-    const [txData] = await pool.query(`SELECT * FROM tx WHERE txFrom='${req.body.data}' OR txTo='${req.body.data}';`)
-    const [blockData] = await pool.query(`SELECT * FROM blocks WHERE miner='${req.body.data}'`)
-    console.log("txRead : " + txData)
-    res.json({txData:txData, blockData:blockData})
+    try {
+        const [txData] = await pool.query(`SELECT * FROM tx WHERE txFrom='${req.body.data}' OR txTo='${req.body.data}';`)
+        const [blockData] = await pool.query(`SELECT * FROM blocks WHERE miner='${req.body.data}'`)
+        console.log(txData[0] === undefined)
+        console.log(blockData)
+        if(txData[0] !== undefined && blockData[0] !== undefined) {
+            res.json({txData:txData, blockData:blockData})
+        } else if (txData[0] === undefined && blockData[0] !== undefined ) {
+            res.json({txData:null, blockData:blockData})
+        } else if (txData[0] !== undefined && blockData[0] === undefined ) {
+            res.json({txData:txData, blockData:null})
+        } else {
+            res.json({txData:null, blockData:null})
+        }
+    } catch (error) {
+        console.log(error)
+        res.json({txData:null, blockData:null})
+    }
 };
 
 // const txView = async (req, res) => {
