@@ -5,18 +5,22 @@ import { useLocation } from "react-router";
 import { Form, InputGroup, FormControl, Button } from 'react-bootstrap'
 
 const AddressDetail = () => {
+  
 
   const { state } = useLocation();
-  console.log(state);
   
-  const searchPublicKey = async () => {
+  const searchPublicKey = async (e) => {
+    e.preventDefault()
+    console.log('들어와?')
     try {
-        const blocks = await axios.post('http://localhost:3500/block/miningBlock', {
+        const blocks = await axios.post('http://localhost:3500/transaction/txRead', {
             data:state,
             
             //publicKey:localStorage.getItem('publicKey')
         }
         )
+        console.log('txRead')
+        console.log(blocks)
     }
     catch (error) {
         console.log(error)

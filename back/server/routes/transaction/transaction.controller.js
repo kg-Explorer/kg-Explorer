@@ -18,10 +18,16 @@ const txSend = async (req, res) => {
 
 const txRead = async (req, res) => {
     // 거래 다 읽어오기
-    const [result] = await pool.query(`SELECT * FROM tx WHERE (txFrom='${req.body.publicKey}' OR txTo='${req.body.publicKey}');`)
-    console.log("txRead : " + result)
+    // console.log('txRead : ' + req.body.data)
+    const [result] = await pool.query(`SELECT * FROM tx WHERE (txFrom='${req.body.data}' OR txTo='${req.body.data}');`)
+    console.log("txRead")
+    console.log(result)
     res.json(result)
 };
+
+// const txView = async (req, res) => {
+//     const [result] = await pool.query(`SELECT * FROM tx`)
+// }
 
 module.exports = {
     txSend,
