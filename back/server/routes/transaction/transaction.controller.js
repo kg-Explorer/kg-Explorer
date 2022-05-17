@@ -23,6 +23,10 @@ const txRead = async (req, res) => {
     res.json(result)
 };
 
+// const txView = async (req, res) => {
+//     const [result] = await pool.query(`SELECT * FROM tx`)
+// }
+
 module.exports = {
     txSend,
     txRead,

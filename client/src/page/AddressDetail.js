@@ -5,24 +5,31 @@ import { useLocation } from "react-router";
 import { Form, InputGroup, FormControl, Button } from 'react-bootstrap'
 
 const AddressDetail = () => {
+  
 
   const { state } = useLocation();
   console.log(state);
   //const [publicKey , setPublickey] = useState('')
   const [postData, setPostData] = useState(0)
-  const [test, setTest] = useState('')
+  const [test, setTest] = useState(null)
   
-  const searchPublicKey = async () => {
+  const searchPublicKey = async (e) => {
+    e.preventDefault()
+    console.log('들어와?')
     try {
         const blocks = await axios.post('http://localhost:3500/transaction/txRead', {
             data:state,
             
             //publicKey:localStorage.getItem('publicKey')
-        }
-        )
-        console.log(blocks)
-        setTest(blocks)
-        setPostData(postData + 1)
+          }
+          )
+          //const blockData = [blocks]
+          console.log(blocks)
+          console.log(blocks.data)
+          console.log(blocks.data[0].txAmount)
+          // console.log(blockData)
+          setTest(blocks.data)
+        //setPostData(postData + 1)
     }
     catch (error) {
         console.log(error)
@@ -44,10 +51,10 @@ const AddressDetail = () => {
   //   }
   // }
 
-  useEffect( () => {
-    //changeKey()
-    console.log(test)
-  },[test])
+  // useEffect( () => {
+  //   //changeKey()
+  //   console.log(test)
+  // },[test])
 
   return (
     <div className='testContainer'>
@@ -64,7 +71,7 @@ const AddressDetail = () => {
           </InputGroup>
         </Form>
       </div>
-      {test}
+      
       <div className='middleBoxCotainer'>
         <div className='middle'>11</div>
         <div className='middle'>22</div>
@@ -72,7 +79,10 @@ const AddressDetail = () => {
       </div>
       <div className='boxContainer'>
         <div className='box1'>
-            box1
+              <h4> txAmount : {test[0].txAmount}</h4>
+              <h4> txFrom : {(test[0].txFrom).substr(0,10)}...{(test[0].txFrom).slice(-10)}</h4>
+              <h4> txTime : {test[0].txTime} </h4>
+              <h4> txTo : {(test[0].txTo).substr(0,10)}...{(test[0].txTo).slice(-10)} </h4>
         </div>
         <div className='box2'>
             box2
