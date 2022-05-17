@@ -14,17 +14,24 @@ const AutoDataPost = (props) => {
         console.log('post가?')
         if(localStorage.getItem('publicKey') !== null){
             try {
-                for(let i=0; i < count; i++) {
-                    await axios.post('http://localhost:3500/block/miningBlock', {
+                // for(let i=0; i < count; i++) {
+                //     await axios.post('http://localhost:3500/block/miningBlock', {
 
-                        data:data,
-                        //count:i,
-                        publicKey:localStorage.getItem('pulicKey')
+                //         data:data,
+                //         //count:i,
+                //         publicKey:localStorage.getItem('pulicKey')
 
-                    }
-                    )
-                    props.setPostData(props.postData + 1)
+                //     }
+                //     )
+                //     props.setPostData(props.postData + 1)
+                await axios.post('http://localhost:3500/block/autoMiningBlock', {
+                    data:data,
+                    count:count,
+                    publicKey:localStorage.getItem('publicKey')
                 }
+                );
+                console.log(count * 1000)
+                setTimeout(() => navigate(0), count * 1000);  
             }
             catch (error) {
                 console.log(error)

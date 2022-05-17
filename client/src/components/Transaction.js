@@ -25,6 +25,13 @@ const Transaction = () => {
                     amount:amount
                 })
                 console.log(txSend.data);
+                if(txSend.data === "errorAddress") {
+                    alert("보낼 주소를 확인해주세요")
+                } else if(txSend.data === "errorBalance") {
+                    alert("잔액이 부족합니다")
+                } else {
+                    alert("트랜잭션 성공")
+                }
             }
             catch (error) {
                 console.log(error)
