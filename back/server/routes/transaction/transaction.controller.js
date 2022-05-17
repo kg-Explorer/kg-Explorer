@@ -22,9 +22,10 @@ const txSend = async (req, res) => {
 
 const txRead = async (req, res) => {
     // 거래 다 읽어오기
-    const [result] = await pool.query(`SELECT * FROM tx WHERE (txFrom='${req.body.data}' OR txTo='${req.body.data}');`)
-    console.log("txRead : " + result)
-    res.json(result)
+    const [txData] = await pool.query(`SELECT * FROM tx WHERE txFrom='${req.body.data}' OR txTo='${req.body.data}';`)
+    const [blockData] = await pool.query(`SELECT * FROM blocks WHERE miner='${req.body.data}'`)
+    console.log("txRead : " + txData)
+    res.json({txData:txData, blockData:blockData})
 };
 
 // const txView = async (req, res) => {
