@@ -23,10 +23,16 @@ const Login = () => {
             const blocks = await axios.post('http://localhost:3500/wallet/checkAddress', {
                 data : publicKey,
             })
-            localStorage.setItem('publicKey', blocks.data.publicKey)
-            console.log("퍼블릭키 포스트 성공")
-            toMainPage()
-
+            console.log(blocks.data);
+            // console.log(blocks.data.publicKey);
+            if(blocks.data) {
+                localStorage.setItem('publicKey', blocks.data.publicKey)
+                console.log("address check success")
+                toMainPage()
+            } else {
+                console.log("address check fail")
+                alert("Please check your address")
+            }
         }
         catch (error) {
             console.log(error)
@@ -38,9 +44,10 @@ const Login = () => {
         setPublicKey(e.target.value)
         console.log(publicKey)
     }
-    const removeLocalStorage = () => {
-        localStorage.removeItem('publicKey');
-    }
+    // const removeLocalStorage = () => {
+    //     localStorage.removeItem("publicKey");
+    //     console.log(localStorage.getItem('publicKey'))
+    // }
 
   return (
     <div className='loginMain'> 
@@ -69,9 +76,9 @@ const Login = () => {
             <button onClick={()=>toCreatekey()}> Create Key</button>
             <button type='submit'>Login</button>
         </div>
-        <div >
+        {/* <div >
             <button onClick={removeLocalStorage}>Logout</button>
-        </div>
+        </div> */}
         </Form>
     </div>
     

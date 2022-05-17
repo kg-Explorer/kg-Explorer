@@ -1,30 +1,35 @@
 import React from 'react'
 import axios from "axios";
 import { useState } from "react";
-
+import { useNavigate } from 'react-router-dom';
 
 const AutoDataPost = (props) => {
+    const navigate = useNavigate();
     const [data, setData] = useState('')
     const [count, setCount] = useState(0)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         console.log('post가?')
-        try {
-            for(let i=0; i < count; i++) {
-                const blocks = await axios.post('http://localhost:3500/block/miningBlock', {
+        if(localStorage.getItem('publicKey' !== null)){
+            try {
+                for(let i=0; i < count; i++) {
+                    const blocks = await axios.post('http://localhost:3500/block/miningBlock', {
 
-                    data:data,
-                    //count:i,
-                    publicKey:localStorage.getItem('pulicKey')
+                        data:data,
+                        //count:i,
+                        publicKey:localStorage.getItem('pulicKey')
 
+                    }
+                    )
+                    props.setPostData(props.postData + 1)
                 }
-                )
-                props.setPostData(props.postData + 1)
             }
-        }
-        catch (error) {
-            console.log(error)
+            catch (error) {
+                console.log(error)
+            }
+        } else {
+            navigate('/login')
         }
     }
 

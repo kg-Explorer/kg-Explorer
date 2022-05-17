@@ -167,18 +167,22 @@ const getAdjustmentDifficulty = () => {
     const expectedTime = DIFFICULTY_ADJUSTMENT_INTERVAL * BLOCK_GENERATOIN_INTERVAL;
     let idx = prevAdjustedBlock.blockIndex;
 
-    if(elapsedTime > (expectedTime * 2)) {
-        const newLog = new Log(idx, expectedTime, elapsedTime, "낮추기", latestBlock.difficulty - 1)
-        difficultyChangeLog.push(newLog)
-        return latestBlock.difficulty - 1;
-    } else if(elapsedTime < (expectedTime / 2)) {
-        const newLog = new Log(idx,expectedTime, elapsedTime, "높이기", latestBlock.difficulty + 1)
-        difficultyChangeLog.push(newLog)
-        return latestBlock.difficulty + 1;
+    if(difficulty > 5) {
+        if(elapsedTime > (expectedTime * 2)) {
+            const newLog = new Log(idx, expectedTime, elapsedTime, "낮추기", latestBlock.difficulty - 1)
+            difficultyChangeLog.push(newLog)
+            return latestBlock.difficulty - 1;
+        } else if(elapsedTime < (expectedTime / 2)) {
+            const newLog = new Log(idx,expectedTime, elapsedTime, "높이기", latestBlock.difficulty + 1)
+            difficultyChangeLog.push(newLog)
+            return latestBlock.difficulty + 1;
+        } else {
+            const newLog = new Log(idx, expectedTime, elapsedTime, "고정", latestBlock.difficulty)
+            difficultyChangeLog.push(newLog)
+            return latestBlock.difficulty;
+        }
     } else {
-        const newLog = new Log(idx, expectedTime, elapsedTime, "고정", latestBlock.difficulty)
-        difficultyChangeLog.push(newLog)
-        return latestBlock.difficulty;
+        return latestBlock.difficulty + 1;
     }
 }
 
