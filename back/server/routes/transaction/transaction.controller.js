@@ -7,10 +7,14 @@ const txSend = async (req, res) => {
 
     try {
         console.log('txSend Try : ' + req.body.data)
-        await pool.query(`INSERT INTO tx(txFrom, txTo, txAmount) VALUES('${req.body.publicKey}', '${req.body.data}', '${req.body.amount}');`)
-        await pool.query(`UPDATE wallet SET walletAmount = walletAmount - ${req.body.amount} WHERE publicKey='${req.body.publicKey}';`)
-        await pool.query(`UPDATE wallet SET walletAmount = walletAmount + ${req.body.amount} WHERE publicKey='${req.body.data}';`)
-        res.send('send 성공이다!!!!!!!!!!!!!')
+        
+        const [result] = await pool.query(`INSERT INTO tx(txFrom, txTo, txAmount) VALUES('${req.body.txFrom}', '${req.body.txTo}', '${req.body.amount}');`)
+        const [result2] = await pool.query(`UPDATE wallet SET walletAmount = walletAmount - ${req.body.amount} WHERE publicKey='${req.body.txFrom}';`)
+        const [result3] = await pool.query(`UPDATE wallet SET walletAmount = walletAmount + ${req.body.amount} WHERE publicKey='${req.body.txTo}';`)
+        res.json({result, result2, result3})
+        console.log('txSend')
+        console.log({result, result2, result3})
+        
     } catch (error) {
         console.log(error)
     }
