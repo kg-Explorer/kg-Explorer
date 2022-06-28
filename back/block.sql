@@ -1,4 +1,4 @@
-
+CREATE DATABASE blockchain;
 -- blocks SQL
 CREATE TABLE blocks(
     `blockIndex` INT(11) NOT NULL,
