@@ -106,7 +106,6 @@ const AddressDetail = () => {
                             <td>{data.blockIndex}</td>
                             <td>{data.data}</td>
                             <td>{data.hash}</td>
-                            {/* <td>{(data.hash).substr(0,10)}...{(data.hash).slice(-10)}</td> */}
                         </tr>
                     })
                 }

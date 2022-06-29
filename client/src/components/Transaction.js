@@ -43,10 +43,6 @@ const Transaction = () => {
         
     }
 
-    // const changeTxFrom = async (e) => {
-    //     setTxFrom(e.target.value)
-    // }
-
     const changeTxTo = async (e) => {
         setTxTo(e.target.value)
     }

@@ -1,8 +1,5 @@
 
 -- blocks SQL
-DROP TABLE blocks;
-
-
 CREATE TABLE blocks(
     `blockIndex` INT(11) NOT NULL,
     `data` VARCHAR(255) NOT NULL,
@@ -24,7 +21,6 @@ INSERT INTO blocks(blockIndex, data, timestamp, hash, previousHash, difficulty, 
 
 
 -- wallet SQL
-DROP TABLE wallet;
 
 CREATE TABLE wallet(
     `idx` INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -48,7 +44,7 @@ CREATE TABLE tx(
 
 SELECT * FROM tx;
 
-DROP TABLE tx;
+DESC tx
 
 
 
