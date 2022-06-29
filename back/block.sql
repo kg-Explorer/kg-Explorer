@@ -1,4 +1,5 @@
 CREATE DATABASE blockchain;
+DROP TABLE blocks;
 -- blocks SQL
 CREATE TABLE blocks(
     `blockIndex` INT(11) NOT NULL,
@@ -8,8 +9,9 @@ CREATE TABLE blocks(
     `previousHash` VARCHAR(255) NOT NULL,
     `difficulty` INT(11) NOT NULL,
     `nonce` INT(11) NOT NULL,
-    `miner` VARCHAR(255) NOT NULL
+    `miner` VARCHAR(255) NULL
 );
+INSERT INTO blocks(blockIndex, data, timestamp, hash, previousHash, difficulty, nonce) VALUES(0,"The Times 03/Jan/2009 Chancellor on brink of second bailout for banks",1652259600,'0','0',1,0);
 SELECT * FROM blocks;
 DESC blocks;
 
