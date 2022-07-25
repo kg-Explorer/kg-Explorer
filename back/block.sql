@@ -12,6 +12,12 @@ CREATE TABLE blocks(
 );
 SELECT * FROM blocks;
 DESC blocks;
+USE blockcs;
+
+
+INSERT INTO blocks(blockIndex, data, timestamp, hash, previousHash, difficulty, nonce, miner) VALUES('0', "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks", '1652259600', 'e8a80e694c0e1e18fc170a00acb10dad2e2fa7e992e7085980e5609c313bfa45', '0', '1', '0', 'sieun');
+
+
 
 
 -- wallet SQL
